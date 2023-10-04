@@ -1,4 +1,4 @@
-﻿@model List<TrenSefer>
+﻿@model IEnumerable<TrenIstasyonListDTO>
 <a asp-action="Create" asp-controller="TrenSefer" class="btn btn-primary">Yeni Kayit</a>
 
 
@@ -16,8 +16,10 @@
                 <td>ID</td>
                 <td>Kalkıs Saati</td>
                 <td>VarisSaati</td>               
-                <td>TrenKalkisIstasyonId</td>
-                <td>TrenVarisIstasyonId</td>
+                
+                <td>TrenKalkisIstasyonAdı</td>
+                <td>TrenVarisIstasyonAdı</td>
+               
 
                 <td></td>
                 <td></td>
@@ -28,7 +30,7 @@
 
         </thead>
         <tbody>
-            @foreach (TrenSefer sefer in Model)
+            @foreach (var sefer in Model)
             {
 
                 <tr class="bg-danger">
@@ -36,8 +38,10 @@
                     <td>@sefer.Id</td>
                     <td>@sefer.KalısSaati</td>
                     <td>@sefer.VarisSaati</td>
-                    <td>@sefer.TrenKalkisIstasyonId</td>
-                    <td>@sefer.TrenVarisIstasyonId</td>
+                   
+                    <td>@sefer.TrenKalkisIstasyonAdi</td>
+                    <td>@sefer.TrenVarisIstasyonAdi</td>
+                   
 
 
                     <td><a asp-action="Update" asp-controller="TrenSefer" class="btn btn-success" asp-route-Id="@sefer.Id">Update</a> </td>

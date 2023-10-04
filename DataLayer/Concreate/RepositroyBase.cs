@@ -8,6 +8,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace DataLayer.Concreate
 {
@@ -57,6 +58,17 @@ namespace DataLayer.Concreate
                 return  _entities.Where(filter).ToList();
             else
                 return _entities.ToList();
+        }
+
+        public IQueryable<T> FindAllInclude(Expression<Func<T, bool>> filter = null, params Expression<Func<T, object>>[] include)
+        {
+            if (filter != null)
+            {
+                _entities.Where(filter);
+            }
+            var result = include.Aggregate(_entities.AsQueryable(),
+                                    (current, includeprop) => current.Include(includeprop));
+            return result;
         }
     }
 }

@@ -17,11 +17,28 @@ namespace WuıLayer.Controllers
         public TrenSeferController(ITrenSeferManager trenSeferManager, ITrenIstasyonManager trenIstasyonManager)
         {
             _trenSeferManager = trenSeferManager;
-         _trenIstasyonManager = trenIstasyonManager;
+            _trenIstasyonManager = trenIstasyonManager;
         }
-        public IActionResult Index()
+        public IActionResult Index()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
         {
-            var result = _trenSeferManager.FindAll();
+            var trenSeferListesi = _trenSeferManager.GetList();
+            var trenIstasyonListesi = _trenIstasyonManager.GetList();
+
+            var result = from ts in trenSeferListesi
+                         let kalkisIstasyon = trenIstasyonListesi.FirstOrDefault(x => x.Id == ts.TrenKalkisIstasyonId)
+                         let varisIstasyon = trenIstasyonListesi.FirstOrDefault(x => x.Id == ts.TrenVarisIstasyonId)
+                         select new TrenIstasyonListDTO
+                         {
+                             KalısSaati = ts.KalısSaati,
+                             VarisSaati = ts.VarisSaati,
+                             TrenKalkisIstasyonAdi = kalkisIstasyon?.IstasyonAdi,
+                             TrenVarisIstasyonAdi = varisIstasyon?.IstasyonAdi,
+                             Id = ts.Id,                             
+                             TrenKalkisIstasyonId = ts.TrenKalkisIstasyonId,
+                             TrenVarisIstasyonId = ts.TrenVarisIstasyonId   
+                             
+                         };
+
             return View(result.ToList());
         }
 

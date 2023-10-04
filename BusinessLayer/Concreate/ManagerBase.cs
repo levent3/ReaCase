@@ -58,5 +58,10 @@ namespace BusinessLayer.Concreate
 
             return result;
         }
+
+        public IQueryable<T> FindAllInclude(Expression<Func<T, bool>>? filter = null, params Expression<Func<T, object>>[]? include)
+        {
+            return _repositoryBase.FindAllInclude(filter, include);
+        }
     }
 }

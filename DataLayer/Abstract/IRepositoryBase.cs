@@ -10,7 +10,8 @@ namespace DataLayer.Abstract
 {
     public interface IRepositoryBase<T>  where T : BaseEntity,new()
     {
-
+       IQueryable<T> FindAllInclude(Expression<Func<T, bool>> filter = null
+            , params Expression<Func<T, object>>[] include);
         IList<T> FindAll(Expression<Func<T, bool>> filter = null);
         T Get(Expression<Func<T, bool>> filter);
         List<T> GetList(Expression<Func<T, bool>> filter = null);
