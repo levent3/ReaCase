@@ -63,5 +63,11 @@ namespace BusinessLayer.Concreate
         {
             return _repositoryBase.FindAllInclude(filter, include);
         }
+
+        public T Delete(T entity)
+        {
+           var result=_repositoryBase.Delete(entity);
+            return result;
+        }
     }
 }

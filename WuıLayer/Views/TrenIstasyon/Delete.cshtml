@@ -1,0 +1,14 @@
+﻿﻿
+@model TrenIstasyonDeleteDTO
+
+
+<h2>Silme Onay Ekranı</h2>
+
+<p>Emin misiniz? Bu öğeyi silmek istediğinizden emin misiniz?</p>
+<p>@Model.IstasyonAdi</p>
+
+<form asp-controller="TrenIstasyon" asp-action="Delete" method="post">
+    <input type="hidden" asp-for="id">
+    <button type="submit" class="btn btn-danger">Evet, Sil</button>
+    <a asp-action="Index" class="btn btn-secondary">İptal</a>
+</form>

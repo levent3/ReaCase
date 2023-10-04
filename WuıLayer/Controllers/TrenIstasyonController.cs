@@ -1,7 +1,9 @@
 ﻿using BusinessLayer.Abstract;
+using BusinessLayer.Concreate;
 using EntityLayer.Concreate;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
+using WuıLayer.Models.Kullanici;
 using WuıLayer.Models.TrenIstasyon;
 
 namespace WuıLayer.Controllers
@@ -130,6 +132,55 @@ namespace WuıLayer.Controllers
 
             }
             return View(istasyonCreateDTO);
+
+        }
+
+
+        [HttpGet]
+        public IActionResult Delete(int Id)
+        {
+            var istasyon = _trenIstasyonManager.Get(p => p.Id == Id);
+            TrenIstasyonDeleteDTO deletDTO = new TrenIstasyonDeleteDTO()
+
+
+            {
+                id = istasyon.Id,
+                IstasyonKonumu = istasyon.IstasyonKonumu,
+                IstasyonAdi = istasyon.IstasyonAdi,
+                IstasyonAdresi = istasyon.IstasyonAdresi
+               
+            
+            
+            
+            };
+            return View(deletDTO);
+        }
+
+
+
+        [HttpPost]
+        public IActionResult Delete(TrenIstasyonDeleteDTO trenIstasyonDeleteDTO)
+        {
+
+
+
+            var istasyon = _trenIstasyonManager.Get(p => p.Id == trenIstasyonDeleteDTO.id);
+            //bool a = Convert.ToBoolean(odaVarmi);
+
+
+
+
+
+            _trenIstasyonManager.Delete(istasyon);
+
+
+            return RedirectToAction("Index", "TrenIstasyon");
+
+
+
+
+
+
 
         }
 

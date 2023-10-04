@@ -18,6 +18,8 @@ namespace DataLayer.Abstract
         T Add(T entity);
         T Update(T entity);
         T GetById(int id);
-       
+
+       T Delete(T entity);
+
     }
 }

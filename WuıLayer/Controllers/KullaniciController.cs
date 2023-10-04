@@ -134,5 +134,60 @@ namespace WuıLayer.Controllers
             return View(kullaniciCreateDTO);
 
         }
+
+
+
+
+
+        [HttpGet]
+        public IActionResult Delete(int Id)
+        {
+            var kullanici = _kullaniciManager.Get(p => p.Id == Id);
+            KullaniciDeleteDTO deletDTO = new KullaniciDeleteDTO()
+
+
+            {
+                id = kullanici.Id,
+                KullaniciAdi = kullanici.KullaniciAdi,
+                Sifre = kullanici.Sifre,
+
+
+
+
+            };
+            return View(deletDTO);
+        }
+
+
+
+        [HttpPost]
+        public IActionResult Delete(KullaniciDeleteDTO kullaniciDeleteDTO)
+        {
+          
+              
+
+                var istasyon = _kullaniciManager.Get(p => p.Id == kullaniciDeleteDTO.id);
+                //bool a = Convert.ToBoolean(odaVarmi);
+             
+                  
+
+
+
+                    _kullaniciManager.Delete(istasyon);
+
+
+                    return RedirectToAction("Index", "Kullanici");
+
+
+                
+
+            
+        
+
+        }
+
+
+
+
     }
 }

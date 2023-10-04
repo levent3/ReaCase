@@ -20,8 +20,9 @@ namespace BusinessLayer.Abstract
         T GetById(int id);
         void Add(T entity);
         void Update(T entity);
+        T Delete(T entity);
 
-      
+
 
     }
 }

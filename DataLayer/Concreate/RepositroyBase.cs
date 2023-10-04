@@ -70,5 +70,12 @@ namespace DataLayer.Concreate
                                     (current, includeprop) => current.Include(includeprop));
             return result;
         }
+
+        public T Delete(T entity)
+        {
+            _entities.Remove(entity);
+            _context.SaveChanges();
+            return entity;
+        }
     }
 }
