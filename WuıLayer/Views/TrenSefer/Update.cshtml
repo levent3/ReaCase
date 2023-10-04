@@ -1,0 +1,122 @@
+﻿@model TrenSeferUpdateDTO
+
+@* <div class="card">
+    <div class="card-header">
+        <h3>@Model.id </h3>
+        <div class="card-header">
+            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        </div>
+    </div>
+    <div class="card-body">
+        <form asp-action="Update" asp-controller="TrenSefer" method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="id">
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Kalkış İstasyonu</label>
+                    @Html.DropDownListFor(x=>x.TrenKalkisIstasyonId,ViewData["TrenIstasyonlari"] as SelectList,new { @class="form-control" })
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Kalkış Saati</label>
+                    <input asp-for="KalısSaati" type="datetime" class="form-control" placeholder="Kalkış saati">
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+            <div class="form-group">
+                <label for="email">Email address:</label>
+                <input type="email" class="form-control" id="email" asp-for="KalısSaati">
+                <span class="fas fa-envelope text-danger" asp-validation-for="KalısSaati"></span>
+            </div>
+
+
+            <div class="input-group mb-3">
+                <input type="datetime" data-provide="datepicker" asp-for="KalısSaati" class="form-control" placeholder="Kalkış saati">
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <span class="fas fa-envelope text-danger" asp-validation-for="KalısSaati"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="input-group mb-3">
+                <input type="date" asp-for="VarisSaati" class="form-control" placeholder="Varış Saati">
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <h3>  </h3>  <span class="fas fa-envelope text-danger" asp-validation-for="VarisSaati"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="input-group mb-3">                
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        @Html.DropDownListFor(x=>x.TrenKalkisIstasyonId,ViewData["TrenIstasyonlari"] as SelectList);
+                    </div>
+                </div>
+            </div>
+            
+            <div class="input-group mb-3">
+                @Html.DropDownListFor(x=>x.TrenVarisIstasyonId,ViewData["TrenIstasyonlari"] as SelectList);
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                        <h3>  </h3>  <span class="fas fa-envelope text-danger" asp-validation-for="TrenVarisIstasyonId"></span>
+                        </div>
+                    </div>
+            </div>
+
+
+                    <button type="submit" class="btn btn-primary" value="Kaydet">Kaydet</button>
+        </form>
+    </div>
+</div>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script> *@
+
+
+<div class="content">
+    <div class="card">
+        <div class="card-header">
+        </div>
+        <form asp-action="Update" asp-controller="TrenSefer" method="post" enctype="multipart/form-data">
+        <div class="card-body">
+
+            
+                <input type="hidden" asp-for="id">
+
+                <div class="form-group">
+                    <label for="inputEmail4">Kalkış İstasyonu</label>
+                    @Html.DropDownListFor(x=>x.TrenKalkisIstasyonId,ViewData["TrenIstasyonlari"] as SelectList,new { @class="form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Kalkış Saati</label>
+                    <input type="datetime" class="form-control" asp-for="KalısSaati" aria-describedby="emailHelp" placeholder="Kalkış Saati">
+                </div>
+
+                <div class="form-group">
+                    <label for="inputEmail4">Varış İstasyonu</label>
+                    @Html.DropDownListFor(x=>x.TrenVarisIstasyonId,ViewData["TrenIstasyonlari"] as SelectList,new { @class="form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Varış Saati</label>
+                    <input type="datetime" class="form-control" asp-for="VarisSaati" aria-describedby="emailHelp" placeholder="Kalkış Saati">
+                </div>
+               @* <div class="form-group">
+                    <label>Varış Saati</label>
+                    <input type="datetime" class="form-control" asp-for="VarisSaati" aria-describedby="emailHelp" placeholder="Kalkış Saati">
+                </div>*@
+                
+            
+        </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary" value="Kaydet">Kaydet</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+
