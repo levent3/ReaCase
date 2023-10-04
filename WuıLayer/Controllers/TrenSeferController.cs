@@ -103,7 +103,7 @@ namespace WuıLayer.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-
+            ViewData["TrenIstasyonlari"] = new SelectList(GetIstasyon(), "Id", "IstasyonAdi");
             var createDto = new TrenSeferCreateDTO();
 
             return View(createDto);
@@ -113,6 +113,7 @@ namespace WuıLayer.Controllers
         [HttpPost]
         public IActionResult Create(TrenSeferCreateDTO seferCreateDTO)
         {
+            ViewData["TrenIstasyonlari"] = new SelectList(GetIstasyon(), "Id", "IstasyonAdi");
             try
             {
                 if (!ModelState.IsValid)

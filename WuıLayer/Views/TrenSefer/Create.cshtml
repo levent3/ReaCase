@@ -1,0 +1,43 @@
+﻿@model TrenSeferCreateDTO
+
+<div class="content">
+    <div class="card">
+        <div class="card-header">
+        </div>
+        <form asp-action="Create" asp-controller="TrenSefer" method="post" enctype="multipart/form-data">
+            <div class="card-body">
+
+
+                <input type="hidden" asp-for="id">
+
+                <div class="form-group">
+                    <label for="inputEmail4">Kalkış İstasyonu</label>
+                    @Html.DropDownListFor(x=>x.TrenKalkisIstasyonId,ViewData["TrenIstasyonlari"] as SelectList,new { @class="form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Kalkış Saati</label>
+                    <input type="datetime" class="form-control" asp-for="KalısSaati" aria-describedby="emailHelp" placeholder="Kalkış Saati">
+                </div>
+
+                <div class="form-group">
+                    <label for="inputEmail4">Varış İstasyonu</label>
+                    @Html.DropDownListFor(x=>x.TrenVarisIstasyonId,ViewData["TrenIstasyonlari"] as SelectList,new { @class="form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Varış Saati</label>
+                    <input type="datetime" class="form-control" asp-for="VarisSaati" aria-describedby="emailHelp" placeholder="Kalkış Saati">
+                </div>
+                @* <div class="form-group">
+                <label>Varış Saati</label>
+                <input type="datetime" class="form-control" asp-for="VarisSaati" aria-describedby="emailHelp" placeholder="Kalkış Saati">
+                </div>*@
+
+
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary" value="Kaydet">Kaydet</button>
+            </div>
+        </form>
+    </div>
+
+</div>
